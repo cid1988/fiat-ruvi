@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row" style="margin-top: 10px;">
+        <div class="col" style="text-align: right">
+            <button class="btn btn-outline-primary">{{fecha | date: 'dd/MM/yy hh:mm'}}</button>
+        </div>
+    </div>
+    <div class="row centered-items">
+        <div class="col-6">
+            <div class="card border-primary justify-content-center">
+                <a data-toggle="modal" data-target="#modalIngreso">
+                    <div class="card-body">
+                        <h3 class="card-title" style="text-align: center;">Ingreso</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card border-danger justify-content-center">
+                <a data-toggle="modal" data-target="#modalEgreso">
+                    <div class="card-body">
+                        <h3 class="card-title" style="text-align: center;">Egreso</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-end" style="margin-bottom: 10px;">
+        <div class="col">
+            <button class="btn btn-outline-primary">Administracion</button>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="container-fluid">
+    <div class="row h-25">
+        <div class="col justify-content-right">
+            {{fecha | date: 'dd/MM'}}
+        </div>
+    </div>
+    <div class="row h-50">
+        <div class="col d-flex justify-content-around align-items-center">
+            <button type="button" class="btn btn-primary" style="width: 5rem; height: 5rem;"data-toggle="modal" data-target="#modalIngreso">Ingreso</button>
+            <button type="button" class="btn btn-danger" style="width: 5rem; height: 5rem;" data-toggle="modal" data-target="#modalEgreso">Egreso</button>
+        </div>
+    </div>
+    <div class="row h-25">
+        <div class="col d-flex justify-content-bottom">
+            <button type="button" class="btn btn-primary">Admin</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal fade" id="modalIngreso" tabindex="-1" role="dialog" aria-labelledby="modalIngresoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form #ingresoForm="ngForm" (ngSubmit)="registrarIngreso(ingresoForm)" novalidate>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalIngresoLabel">Ingreso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" class="form-control" [(ngModel)]="ingreso.valor" name="valor">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEgreso" tabindex="-1" role="dialog" aria-labelledby="modalEgresoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form #egresoForm="ngForm" (ngSubmit)="registrarEgreso(egresoForm)" novalidate>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEgresoLabel">Egreso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" class="form-control" [(ngModel)]="egreso.valor" name="valor">
+                    </div>
+                    <div class="form-group">
+                        <label>Concepto</label>
+                        <select class="form-control" [(ngModel)]="egreso.concepto" name="concepto">
+                            <option>Proveedor</option>
+                            <option>Alivio de caja</option>
+                            <option>Retiro</option>
+                            <option>Devolucion</option>
+                            <option>Gastos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
