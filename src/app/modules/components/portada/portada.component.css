@@ -4,3 +4,8 @@ body,html {
 .centered-items{
     margin: 25% 25% 25% 25%;
 }
+@media (max-width: 600px) {
+    .centered-items{
+        margin: 50% 10% 50% 10%;
+    }
+}
